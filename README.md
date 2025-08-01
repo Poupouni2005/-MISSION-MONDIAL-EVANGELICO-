@@ -13,8 +13,6 @@
       --text-light: #F7F9FC;
       --radius: 14px;
       --shadow: 0 20px 40px -10px rgba(31,59,87,0.4);
-      --transition: .25s cubic-bezier(.4,.2,.2,1);
-      --break: 900px;
       font-family: "Inter", system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
     }
     * { box-sizing:border-box; }
@@ -22,467 +20,171 @@
       margin:0;
       background: linear-gradient(135deg, var(--bg) 0%, #0f2d44 75%);
       color: var(--text-light);
-      min-height:100%;
       line-height:1.5;
-      -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; text-decoration:none; }
     .container {
       max-width: 1100px;
       margin: auto;
-      padding: 1rem 1rem 3rem;
+      padding: 1rem;
     }
     header {
-      position: sticky;
-      top:0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(31,59,87,0.85);
-      padding: .75rem 1rem;
       display:flex;
+      justify-content:space-between;
       align-items:center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap:.75rem;
-      border-radius:0 0 16px 16px;
+      flex-wrap:wrap;
+      padding:1rem 0;
     }
     .logo {
+      font-size:1.5rem;
       font-weight:700;
-      letter-spacing:1px;
-      font-size:1.35rem;
-      display:flex;
-      align-items:center;
-      gap:.4rem;
     }
-    .logo .small { font-size:.65rem; background: var(--highlight); padding:2px 8px; border-radius:999px; margin-left:6px; }
     nav {
       display:flex;
       gap:1rem;
-      flex:1;
-      justify-content:center;
       flex-wrap: wrap;
     }
     nav a {
-      position: relative;
-      padding: .35rem .5rem;
-      font-weight:600;
-      font-size:.95rem;
+      font-weight:500;
+      padding: .5rem;
       border-radius:6px;
-      transition: var(--transition);
     }
     nav a:hover {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
+    }
+    .hero {
+      display:flex;
+      flex-wrap:wrap;
+      gap:2rem;
+      align-items:center;
+      margin:2rem 0;
+    }
+    .hero h1 {
+      font-size:2.4rem;
     }
     .btn-primary {
       background: var(--highlight);
-      color:#fff;
-      padding: .65rem 1.2rem;
+      padding: .75rem 1.5rem;
       border-radius:999px;
-      font-weight:600;
-      cursor:pointer;
-      border:none;
-      display:inline-flex;
-      align-items:center;
-      gap:.4rem;
-      transition: var(--transition);
-    }
-    .btn-primary:hover {
-      filter: brightness(1.08);
-      transform: translateY(-1px);
-    }
-    .hamburger {
-      display:none;
-      cursor:pointer;
-      flex-direction: column;
-      gap:4px;
-      padding:6px;
-    }
-    .hamburger div {
-      width:24px;
-      height:3px;
-      background: var(--text-light);
-      border-radius:2px;
-      transition: var(--transition);
-    }
-
-    /* Hero */
-    .hero {
-      margin-top:1rem;
-      display:flex;
-      flex-wrap: wrap;
-      gap:2rem;
-      align-items:center;
-      position: relative;
-      padding:2rem 0;
-    }
-    .hero-text {
-      flex:1 1 380px;
-    }
-    .badge {
-      background: var(--accent);
+      color:white;
+      font-weight:bold;
       display:inline-block;
-      padding: .35rem .95rem;
-      border-radius:999px;
-      font-size:.6rem;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      margin-bottom:.6rem;
-      font-weight:700;
+      margin-top:1rem;
     }
-    h1 {
-      margin:0 0 .5rem;
-      font-size:2.6rem;
-      line-height:1.1;
+    .section-title {
+      margin-top:3rem;
+      margin-bottom:1rem;
+      font-size:1.8rem;
+      font-weight:bold;
+      border-left:4px solid var(--accent);
+      padding-left:.75rem;
     }
-    p.lead {
-      margin:0 0 1.25rem;
-      font-size:1.1rem;
-      max-width: 600px;
-    }
-    .hero-buttons {
-      display:flex;
-      gap:1rem;
-      flex-wrap: wrap;
-    }
-    .hero-media {
-      flex:1 1 320px;
-      min-width:260px;
-      position: relative;
-    }
-    .video-placeholder {
-      background: rgba(255,255,255,0.08);
-      border-radius:18px;
-      padding:0;
-      overflow:hidden;
-      position: relative;
-      aspect-ratio:16/9;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:.9rem;
-      letter-spacing: .5px;
-    }
-
-    /* Cards grid */
     .cards {
       display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
       gap:1.5rem;
-      margin-top:2rem;
     }
     .card {
-      background: rgba(255,255,255,0.06);
-      padding:1.5rem 1.25rem;
-      border-radius:16px;
-      position: relative;
-      overflow:hidden;
-      backdrop-filter: blur(8px);
-      box-shadow: var(--shadow);
-      display:flex;
-      flex-direction: column;
-      gap:.5rem;
-    }
-    .pill {
-      background: var(--highlight);
-      padding: .35rem .8rem;
-      border-radius:999px;
-      font-size:.65rem;
-      display:inline-block;
-      font-weight:600;
-      margin-bottom:6px;
-      width: max-content;
-    }
-    .card h3 {
-      margin:6px 0 8px;
-      font-size:1.35rem;
-    }
-    .small-text {
-      font-size:.85rem;
-      opacity:.85;
-    }
-    .event-date {
-      display:inline-block;
-      background: rgba(255,255,255,0.08);
-      padding:6px 12px;
-      border-radius:8px;
-      font-weight:600;
-      margin-bottom:6px;
-      font-size:.75rem;
-    }
-
-    /* Section titles */
-    .section-title {
-      margin-top:4rem;
-      margin-bottom:1rem;
-      display:flex;
-      align-items:center;
-      gap:.75rem;
-      flex-wrap: wrap;
-    }
-    .section-title h2 {
-      margin:0;
-      font-size:2rem;
-      position: relative;
-    }
-    .underline {
-      height:4px;
-      width:80px;
-      background: var(--accent);
-      border-radius:2px;
-      margin-top:4px;
-    }
-
-    /* Contact */
-    .grid-2 {
-      display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap:1.5rem;
-      margin-top:1rem;
-    }
-    .contact-card {
       background: rgba(255,255,255,0.05);
-      padding:1.3rem 1rem;
-      border-radius:14px;
-      position: relative;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 30px 50px -10px rgba(31,59,87,0.5);
-      display:flex;
-      flex-direction: column;
-      gap:.6rem;
+      padding:1rem;
+      border-radius:var(--radius);
     }
-    .info-list p {
-      margin:4px 0;
+    iframe {
+      width:100%;
+      height:300px;
+      border:0;
+      border-radius:var(--radius);
     }
-    .map-wrapper {
-      border-radius:12px;
-      overflow:hidden;
-      height:100%;
-      min-height:260px;
-    }
-
-    /* Footer */
     footer {
-      margin-top:4rem;
       text-align:center;
-      font-size:.85rem;
-      padding:2rem 0 1rem;
-      border-top:1px solid rgba(255,255,255,0.1);
-      display:flex;
-      flex-wrap: wrap;
-      gap:12px;
-      justify-content: space-between;
-    }
-    .socials {
-      display:flex;
-      gap:12px;
-    }
-    .socials a {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:36px;
-      height:36px;
-      background: rgba(255,255,255,0.08);
-      border-radius:50%;
-      font-size:14px;
-      font-weight:600;
-      transition: var(--transition);
-    }
-    .socials a:hover {
-      background: var(--accent);
-      color:#0f2d44;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 980px) {
-      h1 { font-size:2.2rem; }
-      .hero { flex-direction: column; }
-      .hamburger { display:flex; }
-      nav { display:none; width:100%; }
-      nav.active { display:flex; flex-direction:column; background: rgba(31,59,87,0.95); padding:10px 12px; border-radius:12px; margin-top:6px; }
+      margin-top:4rem;
+      padding:2rem 0;
+      font-size:.9rem;
+      border-top:1px solid rgba(255,255,255,0.2);
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="logo">
-        MMEFJA <span class="small">Mission Mondial</span>
-      </div>
-      <div class="hamburger" aria-label="menu" onclick="toggleNav()">
-        <div></div><div></div><div></div>
-      </div>
-      <nav id="main-nav">
+      <div class="logo">MMEFJA</div>
+      <nav>
         <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
         <a href="#sermons">Sermons</a>
         <a href="#evenements">Événements</a>
         <a href="#don">Don</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="btn-primary" href="#contact">Rejoindre</a>
     </header>
 
-    <!-- Hero -->
     <section class="hero" id="accueil">
-      <div class="hero-text">
-        <div class="badge">Bienvenue</div>
+      <div>
         <h1>Mission Mondial Évangélico Fondation Jockeirocher de Akouédo Attié</h1>
-        <p class="lead">Un lieu de foi, d’espoir et de transformation à Abatta, Cocody. Rejoins-nous pour vivre une expérience spirituelle vivante et connectée.</p>
-        <div class="hero-buttons">
-          <a class="btn-primary" href="#evenements">Prochains événements</a>
-          <a class="btn-primary" href="#sermons">Écouter un sermon</a>
-        </div>
-      </div>
-      <div class="hero-media">
-        <div class="video-placeholder">
-          <span>Vidéo de bienvenue / sermon</span>
-        </div>
+        <p>Nous sommes une église pentecôtiste située à Abatta, Cocody, non loin du Carrefour Drogba. Nous travaillons avec le Saint-Esprit pour impacter des vies.</p>
+        <a href="#evenements" class="btn-primary">Rejoindre un culte</a>
       </div>
     </section>
 
-    <!-- Sermons -->
-    <div class="section-title">
-      <div>
-        <h2 id="sermons">Sermons récents</h2>
-        <div class="underline"></div>
-      </div>
-    </div>
+    <div class="section-title" id="apropos">À propos</div>
     <div class="cards">
       <div class="card">
-        <div class="pill">Sermon</div>
-        <h3>“Espoir renouvelé”</h3>
-        <p class="small-text">Dimanche dernier – Pasteur principal</p>
-        <p>Découvre comment raviver ta foi et marcher avec assurance dans ta mission.</p>
-        <a class="btn-primary" href="#">Regarder</a>
+        <h3>Notre foi</h3>
+        <p>Nous sommes des pentecôtistes convaincus, guidés par le Saint-Esprit. Nous croyons en la puissance de Dieu pour transformer les vies.</p>
       </div>
       <div class="card">
-        <div class="pill">Sermon</div>
-        <h3>“Vie en abondance”</h3>
-        <p class="small-text">Mercredi – Réunion de prière</p>
-        <p>Un message puissant pour te rappeler que Dieu veut te bénir pleinement.</p>
-        <a class="btn-primary" href="#">Écouter</a>
-      </div>
-      <div class="card">
-        <div class="pill">Archive</div>
-        <h3>Anciennes prédications</h3>
-        <p class="small-text">Triable par thème et date</p>
-        <p>Accède à la bibliothèque complète des sermons passés.</p>
-        <a class="btn-primary" href="#">Voir plus</a>
+        <h3>Nos responsables</h3>
+        <p><strong>Missionnaire :</strong> Emilienne</p>
+        <p><strong>Grand Missionnaire :</strong> JOCKEIRROCHER</p>
+        <p>Ils dirigent l'église avec passion, prière et dévouement pour le Royaume de Dieu.</p>
       </div>
     </div>
 
-    <!-- Événements -->
-    <div class="section-title">
-      <div>
-        <h2 id="evenements">Événements à venir</h2>
-        <div class="underline"></div>
-      </div>
-    </div>
+    <div class="section-title" id="sermons">Sermons</div>
     <div class="cards">
       <div class="card">
-        <div class="event-date">Vendredi 8 août • 19h</div>
-        <h3>Soirée communauté</h3>
-        <p>Musique, partage et témoignages. Viens connecter avec d'autres croyants.</p>
-        <a class="btn-primary" href="#">S’inscrire</a>
+        <h3>Espoir renouvelé</h3>
+        <p>Un message puissant pour raviver la foi et l'espérance en Christ.</p>
       </div>
       <div class="card">
-        <div class="event-date">Dimanche 10 août • 9h</div>
-        <h3>Culte principal</h3>
-        <p>Message inspirant, adoration collective et communion.</p>
-        <a class="btn-primary" href="#">En savoir plus</a>
-      </div>
-      <div class="card">
-        <div class="event-date">Mercredi 13 août • 18h</div>
-        <h3>Réunion de prière</h3>
-        <p>Temps de prière intercessionnelle pour la ville et les leaders.</p>
-        <a class="btn-primary" href="#">Participer</a>
+        <h3>Vie en abondance</h3>
+        <p>Découvrez la vie que Dieu veut pour vous, riche en paix et en bénédictions.</p>
       </div>
     </div>
 
-    <!-- Don -->
-    <div class="section-title">
-      <div>
-        <h2 id="don">Soutenir la mission</h2>
-        <div class="underline"></div>
-      </div>
-    </div>
+    <div class="section-title" id="evenements">Événements</div>
     <div class="cards">
       <div class="card">
-        <div class="pill">Don unique</div>
-        <h3>Investis dans la mission</h3>
-        <p>Un don aide à toucher des vies, organiser des événements et soutenir la communauté.</p>
-        <a class="btn-primary" href="#">Faire un don</a>
+        <h3>Culte du dimanche</h3>
+        <p><strong>Horaire :</strong> Tous les dimanches de 9h à 11h</p>
+        <p>Un temps fort de louange, d’enseignement et de prière dans la présence du Saint-Esprit.</p>
+      </div>
+    </div>
+
+    <div class="section-title" id="don">Soutenir la mission</div>
+    <div class="cards">
+      <div class="card">
+        <h3>Faire un don</h3>
+        <p>Soutenez notre mission d’évangélisation en participant par vos dons. Chaque contribution compte !</p>
+      </div>
+    </div>
+
+    <div class="section-title" id="contact">Contact & Localisation</div>
+    <div class="cards">
+      <div class="card">
+        <h3>Coordonnées</h3>
+        <p><strong>Adresse :</strong> Abatta, Cocody, non loin du Carrefour Drogba</p>
+        <p><strong>Téléphone :</strong> 0708983793</p>
       </div>
       <div class="card">
-        <div class="pill">Don mensuel</div>
-        <h3>Partenaire fidèle</h3>
-        <p>Deviens soutien régulier et vois l’impact durable que cela crée.</p>
-        <a class="btn-primary" href="#">Devenir partenaire</a>
+        <h3>Nous localiser</h3>
+        <iframe src="https://www.google.com/maps?q=Carrefour+Drogba+Cocody+Abatta&output=embed"></iframe>
       </div>
     </div>
 
-    <!-- Contact -->
-    <div class="section-title">
-      <div>
-        <h2 id="contact">Nous trouver</h2>
-        <div class="underline"></div>
-      </div>
-    </div>
-    <div class="grid-2">
-      <div class="contact-card">
-        <div class="pill">Adresse</div>
-        <h3>MMEFJA</h3>
-        <div class="info-list">
-          <p><strong>Lieu :</strong> Abatta, Cocody – Non loin du Carrefour Drogba</p>
-          <p><strong>Ville :</strong> Abidjan, Côte d’Ivoire</p>
-          <p><strong>Téléphone :</strong> +225 XX XX XX XX</p>
-          <p><strong>Email :</strong> contact@mmefja.org</p>
-        </div>
-        <p class="small-text">Horaires suggérés (à confirmer):</p>
-        <p class="small-text">Dimanche 9h • Mercredi 18h • Vendredi 19h</p>
-        <a class="btn-primary" href="mailto:contact@mmefja.org">Écrire</a>
-      </div>
-      <div class="contact-card">
-        <div class="pill">Localisation</div>
-        <div class="map-wrapper">
-          <iframe 
-            src="https://www.google.com/maps?q=Carrefour+Drogba+Cocody+Abatta&output=embed" 
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-          </iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
     <footer>
-      <div>
-        <div style="font-weight:600;">MMEFJA</div>
-        <div style="font-size:.85rem; margin-top:4px;">Mission Mondial Évangélico Fondation Jockeirocher de Akouédo Attié</div>
-      </div>
-      <div class="socials">
-        <a href="#" aria-label="Facebook">F</a>
-        <a href="#" aria-label="YouTube">Y</a>
-        <a href="#" aria-label="Instagram">I</a>
-      </div>
-      <div style="flex:1; text-align:right; font-size:.75rem;">
-        &copy; 2025 MMEFJA — Tous droits réservés
-      </div>
+      &copy; 2025 MMEFJA – Mission Mondial Évangélico Fondation Jockeirocher de Akouédo Attié. Tous droits réservés.
     </footer>
   </div>
-
-  <script>
-    function toggleNav() {
-      const nav = document.getElementById('main-nav');
-      nav.classList.toggle('active');
-    }
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e){
-      const nav = document.getElementById('main-nav');
-      const ham = document.querySelector('.hamburger');
-      if (!nav.contains(e.target) && !ham.contains(e.target)) {
-        nav.classList.remove('active');
-      }
-    });
-  </script>
 </body>
 </html>
